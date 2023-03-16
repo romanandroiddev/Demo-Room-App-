@@ -1,6 +1,7 @@
 package com.example.roomdatabaseapp
 
 import android.content.Context
+import android.content.Intent
 import android.content.res.Configuration
 import android.content.res.Resources
 import androidx.appcompat.app.AppCompatActivity
@@ -44,6 +45,8 @@ class AddStudentActivity : AppCompatActivity() {
 
 
         binding.icBack.setOnClickListener {
+            val intent = Intent(this, MainActivity::class.java)
+            startActivity(intent)
             finish()
         }
 
@@ -51,11 +54,15 @@ class AddStudentActivity : AppCompatActivity() {
         binding.btnDefault.setOnClickListener {
             val pref = getSharedPreferences("pref", Context.MODE_PRIVATE)
             pref.edit().putString("language", "en").apply()
+            val intent = Intent(this, MainActivity::class.java)
+            startActivity(intent)
             finish()
         }
         binding.btnRu.setOnClickListener {
             val pref = getSharedPreferences("pref", Context.MODE_PRIVATE)
             pref.edit().putString("language", "ru").apply()
+            val intent = Intent(this, MainActivity::class.java)
+            startActivity(intent)
             finish()
         }
         binding.btnAddEdit.setOnClickListener {
@@ -94,16 +101,12 @@ class AddStudentActivity : AppCompatActivity() {
         }
     }
 
-    private fun setAppLocale(languageFromPreference: String?, context: Context) {
-//        if (languageFromPreference != null) {
-//            val resources: Resources = context.resources
-//            val dm: DisplayMetrics = resources.displayMetrics
-//            val config: Configuration = resources.configuration
-//            config.setLocale(Locale(languageFromPreference.lowercase(Locale.ROOT)))
-//            val pref = getSharedPreferences("pref",Context.MODE_PRIVATE)
-//            pref.edit().putString("language",languageFromPreference.toString().lowercase()).apply()
-//            resources.updateConfiguration(config, dm)
-//        }
+    override fun onBackPressed() {
+        super.onBackPressed()
+        val intent = Intent(this, MainActivity::class.java)
+        startActivity(intent)
+        finish()
+
     }
 
 }

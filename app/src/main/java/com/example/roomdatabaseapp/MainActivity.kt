@@ -90,6 +90,7 @@ class MainActivity : AppCompatActivity() {
             val intent = Intent(this, AddStudentActivity::class.java)
             intent.putExtra("isEdit", false)
             startActivity(intent)
+            finish()
         }
 
 
@@ -101,6 +102,7 @@ class MainActivity : AppCompatActivity() {
             intent.putExtra("name", it.name)
             intent.putExtra("surname", it.surname)
             startActivity(intent)
+            finish()
         }
 
 
