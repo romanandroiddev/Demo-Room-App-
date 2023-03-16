@@ -4,26 +4,74 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".SearchActivity">
+    tools:context=".AddStudentActivity">
 
 
-    <EditText
-        android:id="@+id/et_search"
+    <View
+        android:id="@+id/bg_topbar"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:layout_marginHorizontal="16dp"
-        android:hint="Search"
+        android:layout_height="60dp"
+        android:background="#2196F3"
         app:layout_constraintTop_toTopOf="parent" />
 
 
+    <ImageView
+        android:id="@+id/ic_back"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:layout_margin="8dp"
+        android:padding="8dp"
+        android:src="@drawable/ic_back"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@id/bg_topbar"
+        app:tint="@color/white" />
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/l_name"
+        style="@style/ThemeOverlay.Material3.AutoCompleteTextView.OutlinedBox.Dense"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="16dp"
+        android:layout_marginTop="16dp"
+        android:hint="Name"
+        app:layout_constraintTop_toBottomOf="@+id/bg_topbar">
+
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/et_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/l_surname"
+        style="@style/ThemeOverlay.Material3.AutoCompleteTextView.OutlinedBox.Dense"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:hint="Surname"
+        app:layout_constraintEnd_toEndOf="@id/l_name"
+        app:layout_constraintStart_toStartOf="@id/l_name"
+        app:layout_constraintTop_toBottomOf="@id/l_name">
+
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/et_surname"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+    </com.google.android.material.textfield.TextInputLayout>
+
     <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/btn_search"
+        android:id="@+id/btn_add_edit"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginBottom="16dp"
-        android:text="Search"
+        android:background="@drawable/bg_rect_8"
+        android:backgroundTint="@color/purple_500"
+        android:text="Add"
+        android:textColor="@color/white"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="@id/et_search"
-        app:layout_constraintStart_toStartOf="@id/et_search" />
+        app:layout_constraintEnd_toEndOf="@id/l_name"
+        app:layout_constraintStart_toStartOf="@id/l_name" />
 </androidx.constraintlayout.widget.ConstraintLayout>

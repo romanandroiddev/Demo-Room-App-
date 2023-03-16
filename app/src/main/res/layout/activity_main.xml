@@ -6,57 +6,49 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-    <EditText
-        android:id="@+id/et_name"
+    <View
+        android:id="@+id/bg_topbar"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginHorizontal="24dp"
-        android:hint="Name"
-        app:layout_constraintBottom_toTopOf="@id/et_surname"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+        android:layout_height="60dp"
+        android:background="#2196F3"
         app:layout_constraintTop_toTopOf="parent" />
 
 
     <EditText
-        android:id="@+id/et_surname"
-        android:layout_width="0dp"
+        android:id="@+id/et_search"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Surname"
-        app:layout_constraintBottom_toTopOf="@id/btn_add"
-        app:layout_constraintEnd_toEndOf="@id/et_name"
-        app:layout_constraintStart_toStartOf="@id/et_name"
-        app:layout_constraintTop_toBottomOf="@id/et_name" />
+        android:layout_marginHorizontal="12dp"
+        android:background="@android:color/transparent"
+        android:drawableEnd="@drawable/ic_search"
+        android:drawableTint="@color/white"
+        android:hint="Search"
+        android:singleLine="true"
+        android:textColorHint="#FFFFFF"
+        app:layout_constraintBottom_toBottomOf="@id/bg_topbar"
+        app:layout_constraintTop_toTopOf="@id/bg_topbar" />
 
 
-    <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/btn_add"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:text="Add"
-        app:layout_constraintBottom_toTopOf="@id/btn_search"
-        app:layout_constraintEnd_toEndOf="@id/et_surname"
-        app:layout_constraintStart_toStartOf="@id/et_surname"
-        app:layout_constraintTop_toBottomOf="@id/et_surname" />
-
-
-    <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/btn_search"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:text="Search"
-        app:layout_constraintBottom_toTopOf="@id/btn_get"
-        app:layout_constraintEnd_toEndOf="@id/et_surname"
-        app:layout_constraintStart_toStartOf="@id/et_surname"
-        app:layout_constraintTop_toBottomOf="@id/btn_add" />
-
-    <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/btn_get"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:text="Get"
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rv_students"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:orientation="vertical"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="@id/et_surname"
-        app:layout_constraintStart_toStartOf="@id/et_surname"
-        app:layout_constraintTop_toBottomOf="@id/btn_search" />
+        app:layout_constraintTop_toBottomOf="@id/bg_topbar" />
+
+
+    <com.google.android.material.imageview.ShapeableImageView
+        android:id="@+id/btn_add"
+        android:layout_width="54dp"
+        android:layout_height="54dp"
+        android:layout_margin="8dp"
+        android:background="#2196F3"
+        app:contentPadding="12dp"
+        app:shapeAppearance="@style/RoundedStyle"
+        android:src="@drawable/ic_add_student"
+        android:tint="@color/white"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>

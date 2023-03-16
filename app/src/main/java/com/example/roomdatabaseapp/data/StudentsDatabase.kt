@@ -24,5 +24,6 @@ abstract class StudentsDatabase() : RoomDatabase() {
             ).fallbackToDestructiveMigration().build()
         }
 
+
     }
 }
