@@ -1,7 +1,11 @@
 package com.example.roomdatabaseapp
 
+import android.content.Context
+import android.content.res.Configuration
+import android.content.res.Resources
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.DisplayMetrics
 import android.util.Log
 import android.widget.Toast
 import androidx.lifecycle.lifecycleScope
@@ -11,6 +15,7 @@ import com.example.roomdatabaseapp.data.models.Student
 import com.example.roomdatabaseapp.databinding.ActivitySearchBinding
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
+import java.util.*
 
 class AddStudentActivity : AppCompatActivity() {
     private lateinit var binding: ActivitySearchBinding
@@ -43,6 +48,16 @@ class AddStudentActivity : AppCompatActivity() {
         }
 
 
+        binding.btnDefault.setOnClickListener {
+            val pref = getSharedPreferences("pref", Context.MODE_PRIVATE)
+            pref.edit().putString("language", "en").apply()
+            finish()
+        }
+        binding.btnRu.setOnClickListener {
+            val pref = getSharedPreferences("pref", Context.MODE_PRIVATE)
+            pref.edit().putString("language", "ru").apply()
+            finish()
+        }
         binding.btnAddEdit.setOnClickListener {
             if (isEdit) {
                 lifecycleScope.launchWhenResumed {
@@ -78,4 +93,17 @@ class AddStudentActivity : AppCompatActivity() {
             }
         }
     }
+
+    private fun setAppLocale(languageFromPreference: String?, context: Context) {
+//        if (languageFromPreference != null) {
+//            val resources: Resources = context.resources
+//            val dm: DisplayMetrics = resources.displayMetrics
+//            val config: Configuration = resources.configuration
+//            config.setLocale(Locale(languageFromPreference.lowercase(Locale.ROOT)))
+//            val pref = getSharedPreferences("pref",Context.MODE_PRIVATE)
+//            pref.edit().putString("language",languageFromPreference.toString().lowercase()).apply()
+//            resources.updateConfiguration(config, dm)
+//        }
+    }
+
 }

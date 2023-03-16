@@ -10,7 +10,7 @@
         android:id="@+id/bg_topbar"
         android:layout_width="match_parent"
         android:layout_height="60dp"
-        android:background="#2196F3"
+        android:background="@color/bg_top_bar_color"
         app:layout_constraintTop_toTopOf="parent" />
 
 
@@ -22,7 +22,7 @@
         android:background="@android:color/transparent"
         android:drawableEnd="@drawable/ic_search"
         android:drawableTint="@color/white"
-        android:hint="Search"
+        android:hint="@string/hello"
         android:singleLine="true"
         android:textColorHint="#FFFFFF"
         app:layout_constraintBottom_toBottomOf="@id/bg_topbar"

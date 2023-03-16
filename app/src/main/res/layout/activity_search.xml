@@ -62,6 +62,30 @@
             android:layout_height="wrap_content" />
     </com.google.android.material.textfield.TextInputLayout>
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="12dp"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toTopOf="@id/btn_add_edit"
+        app:layout_constraintTop_toBottomOf="@id/l_surname">
+
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btn_default"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.5"
+            android:text="Default" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btn_ru"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.5"
+            android:text="Ru" />
+    </LinearLayout>
+
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/btn_add_edit"
         android:layout_width="0dp"

@@ -1,9 +1,13 @@
 package com.example.roomdatabaseapp
 
+import android.content.Context
 import android.content.Intent
+import android.content.res.Configuration
+import android.content.res.Resources
 import android.graphics.Color
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.DisplayMetrics
 import android.widget.Toast
 import androidx.core.view.accessibility.AccessibilityEventCompat.setAction
 import androidx.core.widget.addTextChangedListener
@@ -16,6 +20,7 @@ import com.example.roomdatabaseapp.data.dao.StudentsDao
 import com.example.roomdatabaseapp.data.models.Student
 import com.example.roomdatabaseapp.databinding.ActivityMainBinding
 import com.google.android.material.snackbar.Snackbar
+import java.util.*
 
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
@@ -26,6 +31,8 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        val pref = getSharedPreferences("pref",Context.MODE_PRIVATE)
+        setAppLocale(pref.getString("language","en"),this@MainActivity)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
         dao = StudentsDatabase.getInstance(this).getStudentsDao()
@@ -121,5 +128,18 @@ class MainActivity : AppCompatActivity() {
             adapter.models = dao.getListOfStudents().toMutableList()
         }
 
+    }
+
+
+    private fun setAppLocale(languageFromPreference: String?, context: Context) {
+        if (languageFromPreference != null) {
+            val resources: Resources = context.resources
+            val dm: DisplayMetrics = resources.displayMetrics
+            val config: Configuration = resources.configuration
+            config.setLocale(Locale(languageFromPreference.lowercase(Locale.ROOT)))
+            val pref = getSharedPreferences("pref", Context.MODE_PRIVATE)
+            pref.edit().putString("language",languageFromPreference.toString().lowercase()).apply()
+            resources.updateConfiguration(config, dm)
+        }
     }
 }
